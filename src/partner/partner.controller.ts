@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Req, Get } from '@nestjs/common';
 import { PartnerService } from './partner.service';
 import { CreatePartnerDto } from './dto/create-partner.dto';
 import { AuthGuard } from 'src/auth/auth.guard';
@@ -9,14 +9,17 @@ export class PartnerController {
   constructor(private readonly partnerService: PartnerService) {}
 
   @Post()
-  create(@Body() createPartnerDto: CreatePartnerDto) {
-    return this.partnerService.create(createPartnerDto);
+  create(@Body() createPartnerDto: CreatePartnerDto, @Req() req: any) {
+    return this.partnerService.create({
+      ...createPartnerDto,
+      userId: req.user.id,
+    });
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.partnerService.findAll();
-  // }
+  @Get()
+  findAll() {
+    return this.partnerService.findAll();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
