@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreatePartnerDto } from './dto/create-partner.dto';
-import { UpdatePartnerDto } from './dto/update-partner.dto';
 
 @Injectable()
 export class PartnerService {
@@ -11,19 +10,19 @@ export class PartnerService {
     return createPartnerDto;
   }
 
-  findAll() {
-    return `This action returns all partner`;
-  }
+  // findAll() {
+  //   return `This action returns all partner`;
+  // }
 
-  findOne(id: number) {
-    return `This action returns a #${id} partner`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} partner`;
+  // }
 
-  update(id: number, updatePartnerDto: UpdatePartnerDto) {
-    return updatePartnerDto;
-  }
+  // update(id: number, updatePartnerDto: UpdatePartnerDto) {
+  //   return updatePartnerDto;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} partner`;
-  }
+  // remove(id: number) {
+  //   return `This action removes a #${id} partner`;
+  // }
 }

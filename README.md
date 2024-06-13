@@ -9,6 +9,7 @@
 - nest g service service-name
 - npm install @nestjs/jwt
 - nest g resource resource-name
+- nest g guard guard-name
 
 ## Prisma
 
