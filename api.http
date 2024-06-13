@@ -1,0 +1,59 @@
+### Get all users
+GET http://localhost:3000/users
+
+### Create common user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Common User 1",
+  "email": "commonuser1@emailtest.com",
+  "password": "123456"
+}
+
+### Create partner user
+POST http://localhost:3000/partners/users
+Content-Type: application/json
+
+{
+  "name": "Partner User 1",
+  "email": "partneruser1@emailtest.com",
+  "password": "123456"
+}
+
+### Login (get JWT token)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "partneruser1@emailtest.com",
+  "password": "123456"
+}
+
+### Create partner
+POST http://localhost:3000/partners
+Content-Type: application/json
+Authorization: Bearer token
+
+{
+  "name": "Partner 1"
+}
+
+### Get all partners - for convenience development only
+GET http://localhost:3000/partners
+Authorization: Bearer token
+
+### Create partner event
+POST http://localhost:3000/events
+Authorization: Bearer token
+Content-Type: application/json
+
+{
+  "name": "Event 1",
+  "description": "Event 1",
+  "date": "2024-06-15T10:00:00"
+}
+
+### Get all partner events
+GET http://localhost:3000/events
+Authorization: Bearer token
