@@ -14,24 +14,27 @@ datasource db {
 }
 
 model User {
-  id          String       @id @default(uuid())
-  name        String
-  email       String
-  password    String
-  roles       Json
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  password  String
+  roles     Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   PartnerUser PartnerUser?
 
   @@unique([email])
 }
 
 model Partner {
-  id          String        @id @default(uuid())
-  name        String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   PartnerUser PartnerUser[]
+  Event       Event[]
 }
 
 model PartnerUser {
@@ -45,4 +48,16 @@ model PartnerUser {
   User    User    @relation(fields: [userId], references: [id])
 
   @@unique([userId])
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  date        DateTime
+  partnerId   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  Partner Partner @relation(fields: [partnerId], references: [id])
 }
