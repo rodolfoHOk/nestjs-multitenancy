@@ -7,6 +7,7 @@
 - nest g module module-name
 - nest g controller controller-name
 - nest g service service-name
+- npm install @nestjs/jwt
 
 ## Prisma
 

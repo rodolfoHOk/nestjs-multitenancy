@@ -30,10 +30,13 @@ Content-Type: application/json
   "password": "123456"
 }
 
+### Token variable
+@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjMjkxMjEyLTk5YmMtNDA5Yi1iMGQzLWI2NjFkMzU4MjdmOSIsIm5hbWUiOiJQYXJ0bmVyIFVzZXIgMSIsImVtYWlsIjoicGFydG5lcnVzZXIxQGVtYWlsdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMTNUMTc6MzY6NTMuODgyWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMTNUMTc6MzY6NTMuODgyWiIsImlhdCI6MTcxODMwMzAyNywiZXhwIjoxNzE4MzEzMDI3fQ.ClV1RMfWS4OEdYHEHCbuFLb51X_lwmBXp_EDYwBG98w"
+
 ### Create partner
 POST http://localhost:3000/partners
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{token}}
 
 {
   "name": "Partner 1"
@@ -41,11 +44,11 @@ Authorization: Bearer token
 
 ### Get all partners - for convenience development only
 GET http://localhost:3000/partners
-Authorization: Bearer token
+Authorization: Bearer {{token}}
 
 ### Create partner event
 POST http://localhost:3000/events
-Authorization: Bearer token
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -56,4 +59,4 @@ Content-Type: application/json
 
 ### Get all partner events
 GET http://localhost:3000/events
-Authorization: Bearer token
+Authorization: Bearer {{token}}

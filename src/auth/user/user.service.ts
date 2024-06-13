@@ -9,10 +9,6 @@ import { CreatePartnerUserDto } from './dto/create-partner-user.dto';
 export class UserService {
   constructor(private prismaService: PrismaService) {}
 
-  findAll() {
-    return this.prismaService.user.findMany();
-  }
-
   createCommonUser(requestBody: CreateCommonUserDto) {
     return this.prismaService.user.create({
       data: {
@@ -33,7 +29,24 @@ export class UserService {
     });
   }
 
+  findOne(idOrEmail: string) {
+    return this.prismaService.user.findFirst({
+      where: this.isEmail(idOrEmail) ? { email: idOrEmail } : { id: idOrEmail },
+    });
+  }
+
+  // for convenience development only
+  findAll() {
+    return this.prismaService.user.findMany();
+  }
+
   private generateHash(password: string) {
     return bcrypt.hashSync(password, 10);
+  }
+
+  private isEmail(value: string) {
+    return value.match(
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+    );
   }
 }
