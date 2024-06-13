@@ -1,7 +1,18 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import { EventService } from './event.service';
 import { CreateEventDto } from './dto/create-event.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { TenantInterceptor } from 'src/tenant/tenant.interceptor';
 
+@UseGuards(AuthGuard)
+@UseInterceptors(TenantInterceptor)
 @Controller('events')
 export class EventController {
   constructor(private readonly eventService: EventService) {}
