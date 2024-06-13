@@ -14,13 +14,35 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String
-  password  String
-  roles     Json
+  id          String       @id @default(uuid())
+  name        String
+  email       String
+  password    String
+  roles       Json
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  PartnerUser PartnerUser?
+
+  @@unique([email])
+}
+
+model Partner {
+  id          String        @id @default(uuid())
+  name        String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  PartnerUser PartnerUser[]
+}
+
+model PartnerUser {
+  id        Int      @id @default(autoincrement())
+  partnerId String
+  userId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([email])
+  Partner Partner @relation(fields: [partnerId], references: [id])
+  User    User    @relation(fields: [userId], references: [id])
+
+  @@unique([userId])
 }
