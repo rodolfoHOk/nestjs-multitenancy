@@ -16,8 +16,8 @@ POST http://localhost:3000/partners/users
 Content-Type: application/json
 
 {
-  "name": "Partner User 1",
-  "email": "partneruser1@emailtest.com",
+  "name": "Partner User 2",
+  "email": "partneruser2@emailtest.com",
   "password": "123456"
 }
 
@@ -26,12 +26,12 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "email": "partneruser1@emailtest.com",
+  "email": "commonuser1@emailtest.com",
   "password": "123456"
 }
 
 ### Token variable
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjMjkxMjEyLTk5YmMtNDA5Yi1iMGQzLWI2NjFkMzU4MjdmOSIsIm5hbWUiOiJQYXJ0bmVyIFVzZXIgMSIsImVtYWlsIjoicGFydG5lcnVzZXIxQGVtYWlsdGVzdC5jb20iLCJyb2xlcyI6WyJQQVJUTkVSIl0sImNyZWF0ZWRBdCI6IjIwMjQtMDYtMTNUMTc6MzY6NTMuODgyWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMTNUMTc6MzY6NTMuODgyWiIsImlhdCI6MTcxODMwNDQyMywiZXhwIjoxNzE4MzE0NDIzfQ._UOiFwpAqKIC0ggSVFWjSqjNAbOwQhiYqQxeESKQ2Sw
+@token = access_token
 
 ### Create partner
 POST http://localhost:3000/partners
@@ -39,7 +39,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "Partner 1"
+  "name": "Partner 3"
 }
 
 ### Get all partners - for convenience development only
@@ -52,8 +52,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "name": "Event 1",
-  "description": "Event 1",
+  "name": "Event 1 Partner 2",
+  "description": "Event 1 Partner 2",
   "date": "2024-06-15T10:00:00"
 }
 
